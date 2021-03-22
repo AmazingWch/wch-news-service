@@ -1,11 +1,10 @@
 import json
-import string
 
 import simplejson as simplejson
 from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
-from rest_framework.status import HTTP_201_CREATED, HTTP_200_OK
+#from rest_framework.parsers import JSONParser
+#from rest_framework.status import HTTP_201_CREATED, HTTP_200_OK
 
 from space.models import Authors, Stories
 from space.forms import StoriesForm
@@ -28,7 +27,7 @@ def logIn(request):
             http_response.content = 'authentication failed.'
         else:
             login(request, user)
-            http_response.status = HTTP_200_OK
+            http_response.status_code = 200
             http_response.content = 'Welcome to the news world!'
         return http_response
 
@@ -138,7 +137,7 @@ def deleteStory(request):
                 http_response.content = "This story does not exist."
                 return http_response
             story.delete()
-            http_response.status = HTTP_201_CREATED
+            http_response.status_code = 201
             http_response.content = "This story is deleted."
             return http_response
         else:
