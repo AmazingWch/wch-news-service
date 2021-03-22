@@ -9,22 +9,19 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_200_OK
 
 from space.models import Authors, Stories
 from space.forms import StoriesForm
-from space.serializers import AuthorsSerializer, StoriesSerializer
 from django.http import HttpResponse
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 
 
 @csrf_exempt
 def logIn(request):
     http_response = HttpResponse()
-    http_response["Content-Type"] = 'application/x-www-form-urlencoded'
+    http_response["Content-Type"] = 'text-plain'
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        user0 = Authors.objects.get(username=username)
         user = authenticate(username=username, password=password)
         if user is None:
             http_response.status_code = 401
