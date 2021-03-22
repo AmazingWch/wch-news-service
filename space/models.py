@@ -23,10 +23,10 @@ class Stories(models.Model):
     key = models.AutoField(auto_created=True, primary_key=True)
     headline = models.CharField(max_length=64)
 
-    POLITICS = 'POL'
-    ART = 'ART'
-    TECHNOLOGY = 'TECH'
-    TRIVIAL = 'TRIVIA'
+    POLITICS = 'pol'
+    ART = 'art'
+    TECHNOLOGY = 'tech'
+    TRIVIAL = 'trivia'
     CATEGORY_CHOICES = (
         (POLITICS, 'Politics News'),
         (ART, 'Art News'),
@@ -38,9 +38,9 @@ class Stories(models.Model):
         choices=CATEGORY_CHOICES,
     )
 
-    UK = 'UK'
-    EUROPEAN = 'EU'
-    WORLD = 'W'
+    UK = 'uk'
+    EUROPEAN = 'eu'
+    WORLD = 'w'
     REGION_CHOICES = (
         (UK, 'UK News'),
         (EUROPEAN, 'European News'),
